@@ -1,35 +1,19 @@
-class BankAccount {
-    private double balance;
-
-    public BankAccount(double initialBalance) {
-        this.balance = initialBalance;
-    }
-
-    public void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-        }
-    }
-
-    public void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-        }
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-}
+import java.util.Scanner;
 
 public class bank{
-    public static void main(String[] args) {
-System.out.println(" ");
-        System.out.println("\t\t BANK MANAGEMENT SYSTEM");
-        System.out.println("\t\t__________________________");
-        BankAccount account = new BankAccount(1000.0);
-        System.out.println("Initial Balance: " + account.getBalance());
-        account.deposit(500.0);
-        System.out.println("Balance after Deposit: " + account.getBalance());
-    }
+	public static void main(String[] args){
+		Scanner input = new Scanner(System.in);
+		System.out.print("Current Balance: ");
+		float cur_bal = input.nextFloat();
+		System.out.print("Withdrawal Amount: ");
+		float withdraw_amt = input.nextFloat();
+		
+		if (withdraw_amt > cur_bal){
+			System.out.println("Insufficient Balance!");
+		}
+		else{
+			cur_bal = cur_bal - withdraw_amt;
+			System.out.println("Withdraw successful. New balance: " + cur_bal);
+		}
+	}
 }
